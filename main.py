@@ -38,7 +38,12 @@ while running:
 
     for index, row in data.iterrows():
         screen.fill((255, 255, 255))
-        pygame.draw.circle(screen, (0, 0, 255), ((x*6) + 500, (y*6) + 500), 20)
+        pygame.draw.circle(screen, (0, 0, 255), ((x*6) + 500, (y*6) + 500), 10)
+        #pygame.draw.circle(screen, (0, 255, 0), ((x + row['FirstObjectDistance_X'])*6 +500, (y + row['FirstObjectDistance_Y'])*6 + 500), 5)
+
+        pygame.draw.circle(screen, (0, 255, 0), ((x + row['SecondObjectDistance_X'])*6 +500, (y + row['SecondObjectDistance_Y'])*6 + 500), 5)
+        #pygame.draw.circle(screen, (255, 255, 0), ((x*6) + 500 + row['ThirdObjectDistance_X']*6, (y*6) + 500 + row['ThirdObjectDistance_Y']*6), 5)
+        #pygame.draw.circle(screen, (0, 255, 255), ((x*6) + 500 + (row['FourthObjectDistance_X']*6), (y*6) + 500 + (row['FourthObjectDistance_Y']*6)), 5)
         if (index < (len(data) - 1)):
             delt = data.iloc[index + 1]['Timestamp'] - row['Timestamp']
         print('delt', delt)
@@ -48,7 +53,7 @@ while running:
         y = y + dely
         theta = theta + row['YawRate']*delt
         print(x, y)
-        pygame.time.delay(2)
+        pygame.time.delay(10)
         pygame.display.flip()
     x = 0
     y = 0
