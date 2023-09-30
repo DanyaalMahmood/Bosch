@@ -38,7 +38,7 @@ Easy integration with custom datasets.
 Project Structure
 The project is organized as follows:
 
-script.py: The main Python script for data processing and visualization.
+main.py: The main Python script for data processing and visualization.
 
 ### Future Enhancements
 This project is continuously evolving, and future enhancements may include:
