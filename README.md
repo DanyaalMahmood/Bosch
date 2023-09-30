@@ -14,7 +14,7 @@ To use this project, follow these steps:
 
 ### Clone the repository:
 
-git clone https://github.com/your-username/autonomous-vehicle-collision.git
+git clone https://github.com/DanyaalMahmood/Bosch.git
 
 cd autonomous-vehicle-collision
 Ensure you have Python and Pygame installed on your system. You can install Pygame using pip:
@@ -23,10 +23,10 @@ pip install pygame
 
 Run the project with the following command, providing the path to your input CSV file as an argument:
 
-python script.py <input_file>
+python main.py <input_file>
 
 ### Usage
-Replace <input_file> with the path to your input CSV file containing object parameters and vehicle data.
+Replace <input_file> with the name of your input CSV file containing object parameters and vehicle data. The csv file should be in the same directory.
 The application will display an interactive visualization of the vehicle's movement and objects in its environment.
 It calculates object distances, detects potential collisions, and provides case descriptions.
 Features
