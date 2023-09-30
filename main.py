@@ -4,7 +4,7 @@ import math
 
 pygame.init()
 
-data = pd.read_csv("data_normalized.csv")
+data = pd.read_csv("smoothed_data.csv")
 
 # Set up the drawing window
 screen = pygame.display.set_mode([1000, 1000])
@@ -39,11 +39,11 @@ while running:
     for index, row in data.iterrows():
         screen.fill((255, 255, 255))
         pygame.draw.circle(screen, (0, 0, 255), ((x*6) + 500, (y*6) + 500), 10)
-        #pygame.draw.circle(screen, (0, 255, 0), ((x + row['FirstObjectDistance_X'])*6 +500, (y + row['FirstObjectDistance_Y'])*6 + 500), 5)
+        # pygame.draw.circle(screen, (0, 255, 0), ((x + row['FirstObjectDistance_X'])*6 +500, (y + row['FirstObjectDistance_Y'])*6 + 500), 5)
 
-        pygame.draw.circle(screen, (0, 255, 0), ((x + row['SecondObjectDistance_X'])*6 +500, (y + row['SecondObjectDistance_Y'])*6 + 500), 5)
-        #pygame.draw.circle(screen, (255, 255, 0), ((x*6) + 500 + row['ThirdObjectDistance_X']*6, (y*6) + 500 + row['ThirdObjectDistance_Y']*6), 5)
-        #pygame.draw.circle(screen, (0, 255, 255), ((x*6) + 500 + (row['FourthObjectDistance_X']*6), (y*6) + 500 + (row['FourthObjectDistance_Y']*6)), 5)
+        # pygame.draw.circle(screen, (0, 255, 0), ((x + row['SecondObjectDistance_X'])*6 +500, (y + row['SecondObjectDistance_Y'])*6 + 500), 5)
+        # pygame.draw.circle(screen, (255, 255, 0), ((x*6) + 500 + row['ThirdObjectDistance_X']*6, (y*6) + 500 + row['ThirdObjectDistance_Y']*6), 5)
+        pygame.draw.circle(screen, (0, 255, 255), ((x*6) + 500 + (row['FourthObjectDistance_X']*6), (y*6) + 500 + (row['FourthObjectDistance_Y']*6)), 5)
         if (index < (len(data) - 1)):
             delt = data.iloc[index + 1]['Timestamp'] - row['Timestamp']
         print('delt', delt)
