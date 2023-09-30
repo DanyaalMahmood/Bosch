@@ -1,3 +1,4 @@
+import sys
 import pygame
 import pandas as pd
 import math
@@ -7,7 +8,43 @@ import pygame.mixer
 pygame.init()
 pygame.mixer.init()
 
-data = pd.read_csv("data_normalized.csv")
+# Check if the correct number of command-line arguments is provided
+if len(sys.argv) != 2:
+    print("Usage: python script.py <input_file>")
+    sys.exit(1)
+
+# Get the file name from the command-line argument
+file_name = sys.argv[1]
+
+try:
+    # Read the CSV file into a DataFrame
+    data = pd.read_csv(file_name)
+    normalize_columns = [
+    'FirstObjectDistance_X', 'FirstObjectDistance_Y',
+    'SecondObjectDistance_X', 'SecondObjectDistance_Y',
+    'ThirdObjectDistance_X', 'ThirdObjectDistance_Y',
+    'FourthObjectDistance_X', 'FourthObjectDistance_Y',
+    'VehicleSpeed', 'FirstObjectSpeed_X', 'FirstObjectSpeed_Y',
+    'SecondObjectSpeed_X', 'SecondObjectSpeed_Y',
+    'ThirdObjectSpeed_X', 'ThirdObjectSpeed_Y',
+    'FourthObjectSpeed_X', 'FourthObjectSpeed_Y']
+
+    # Divide the specified columns by the corresponding normalization factors
+    data[normalize_columns] = data[normalize_columns] / [128, 128, 128, 128, 128, 128, 128, 128, 256, 256, 256, 256, 256, 256, 256, 256, 256]
+
+    # Perform operations on the data as needed
+    # For example, print the first few rows of the DataFrame
+    print(data.head())
+
+    # Your additional operations here
+
+except FileNotFoundError:
+    print(f"File not found: {file_name}")
+except pd.errors.EmptyDataError:
+    print(f"The file {file_name} is empty or not in CSV format.")
+except Exception as e:
+    print(f"An error occurred: {e}")
+
 
 # Set up the drawing window
 screen = pygame.display.set_mode([1200, 1200])
